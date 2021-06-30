@@ -10,6 +10,8 @@ const sequelize = new Sequelize(
 
 db.sequelize = sequelize;
 
+db.User=User;
+
 User.init(sequelize);
 
 User.associate(db);
