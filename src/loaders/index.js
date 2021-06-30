@@ -1,17 +1,9 @@
 const expressLoader=require('./express');
+const sequelizeLoader=require('./sequelize');
 
 module.exports=async (app)=>{
-	//db
-	const {sequelize} =require('../models');
-	  sequelize
-        .sync({ force: false })
-        .then(() => {
-            console.log('database connecting success');
-        })
-        .catch((err) => {
-            console.error(err);
-        });
 	
+	//await sequelizeLoader();
 	await expressLoader(app);
 };
 
