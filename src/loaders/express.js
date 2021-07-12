@@ -12,6 +12,8 @@ const cors = require('cors')();
 const router = require('../api');
 
 module.exports = (app) => {
+    dotenv.config();
+	
     app.set('view engine', 'html');
     nunjucks.configure('views', {
         express: app,
@@ -51,7 +53,15 @@ module.exports = (app) => {
     app.use(express.urlencoded({ extended: false }));
     app.use(cookieParser(process.env.COOKIE_SECRET));
     //app.use(sessionMiddleware);
-
+    /*app.use(session({
+        resave: false,
+        saveUninitialized: false,
+        secret: process.env.COOKIE_SECRET,
+        cookie: {
+            httpOnly: true,
+            secure: false,
+        },
+    }));*/
     app.use(router());
 
     app.use((req, res, next) => {
